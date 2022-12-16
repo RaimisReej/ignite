@@ -35,6 +35,5 @@ const base_url = `https://api.rawg.io/api/games?key=${API_KEY}`;
 
 const popular_games = `&dates=${lastYear},${currentDate}&ordering=-rating&page_size=10`
 
- const popularGamesUrl = () => `${base_url}${popular_games}`
+export  const popularGamesUrl = () => `${base_url}${popular_games}`
 
-console.log(popularGamesUrl())
