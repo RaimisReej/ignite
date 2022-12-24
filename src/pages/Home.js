@@ -1,4 +1,5 @@
 import React, {useEffect} from "react";
+import GameDetail from "../components/GameDetail";
 
 //redux
 import { useDispatch,useSelector } from "react-redux";
@@ -18,11 +19,12 @@ const Home = () => {
     },[dispatch])
 
     //pull that data back
-    const {popular,newGames,upcoming} = useSelector((state) => state.games)
+    const {popular,newGames,upcoming,} = useSelector((state) => state.games)
     
 
     return(
         <GameList>
+            {/* <GameDetail/> */}
             <h2>Upcoming Games</h2>
             <Games>
                 {upcoming.map(game => (
