@@ -12,9 +12,8 @@ function App() {
      
       <GlobalStyles/>
       <Routes>
-        {/* <Route path="/" element={<Home/>}><Route/>
-        <Route path="/game/:id" element={<Home/>}><Route/>
-        </Route> */}
+        <Route path="/" element={<Home/>}></Route>
+        <Route path="/game/:id" element={<Home/>}></Route>
       </Routes>
     </div>
   );

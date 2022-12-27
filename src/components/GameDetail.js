@@ -4,13 +4,29 @@ import styled from "styled-components";
 import { motion } from "framer-motion";
 //redux
 import { useSelector } from "react-redux";
+import { useNavigate } from 'react-router-dom';
+import { smallImage } from "../util";
 
-const GameDetail = () => {
+const GameDetail = ({pathId}) => {
+    const navigate = useNavigate();
+    //exit detail
+    const exitDetailHandler = (e) => {
+        const element = e.target;
+        if(element.classList.contains("shadow")){
+            document.body.style.overflow = 'auto'
+            navigate('/');
+        }
+        console.log(element)
+    }
     //Data
-    const { screen, game} = useSelector((state) => state.details);
+    const { screen, game, isLoading} = useSelector((state) => state.details);
     return (
-        <CardShadow>
-            <Detail>
+        <>
+        {!isLoading && (
+
+        
+        <CardShadow className="shadow" onClick={exitDetailHandler}>
+            <Detail layoutId={pathId}>
                 <Stats>
                     <div className="rating">
                         <h3>{game.name}</h3>
@@ -26,7 +42,7 @@ const GameDetail = () => {
                     </Info>
                 </Stats>
                 <Media>
-                    <img src={game.background_image} alt="image" />
+                    <motion.img  layoutId={`image ${pathId}`} src={smallImage(game.background_image,1280 )} alt="image" />
                 </Media>
                 <Description>
                     <p>{game.description_raw}</p>
@@ -38,6 +54,8 @@ const GameDetail = () => {
                 </div>
             </Detail>
         </CardShadow>
+        )}
+        </>
     )
 }
 
